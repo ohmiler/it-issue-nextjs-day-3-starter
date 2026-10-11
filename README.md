@@ -10,6 +10,63 @@
 - [Git](https://git-scm.com)
 - บัญชี [GitHub](https://github.com)
 
+## ตั้งค่าเครื่องครั้งแรก
+
+> ทำครั้งเดียวต่อเครื่อง ถ้าเคยทำแล้วข้ามไปหัวข้อ [เริ่มต้นใช้งาน](#เริ่มต้นใช้งาน) ได้เลย
+
+### 1. ติดตั้ง Node.js
+
+ดาวน์โหลดเวอร์ชัน **LTS** จาก [nodejs.org](https://nodejs.org) แล้วติดตั้งตามขั้นตอน (กด Next ไปเรื่อยๆ ได้)
+
+ปิดแล้วเปิด terminal ใหม่ จากนั้นเช็คว่าติดตั้งสำเร็จ:
+
+```bash
+node -v
+npm -v
+```
+
+ต้องขึ้นเลขเวอร์ชัน โดย Node ต้องเป็น `v20.9` ขึ้นไป
+
+### 2. ติดตั้ง Git
+
+- **Windows:** ดาวน์โหลดจาก [git-scm.com](https://git-scm.com/download/win) แล้วติดตั้งด้วยค่าเริ่มต้นทั้งหมด
+- **Mac:** เปิด Terminal แล้วพิมพ์ `git --version` ถ้ายังไม่มี เครื่องจะเด้งให้ติดตั้ง Command Line Tools ให้กด **Install**
+
+เช็คว่าติดตั้งสำเร็จ:
+
+```bash
+git --version
+```
+
+### 3. ตั้งชื่อและอีเมลให้ Git
+
+ถ้าไม่ทำขั้นนี้ `git commit` จะ error ให้ใช้อีเมลเดียวกับที่สมัคร GitHub:
+
+```bash
+git config --global user.name "ชื่อของคุณ"
+git config --global user.email "อีเมลที่ใช้กับ GitHub"
+```
+
+### 4. Login GitHub ให้ push ได้
+
+GitHub **ไม่รับรหัสผ่านปกติ**ตอน `git push` แล้ว ต้อง login ด้วยวิธีใดวิธีหนึ่งต่อไปนี้
+
+**Windows:** ไม่ต้องทำอะไร ตอน `git push` ครั้งแรกจะมีหน้าต่างให้ login ผ่านเบราว์เซอร์ ให้กด **Sign in with your browser** แล้วกดอนุญาต
+
+**Mac:** ติดตั้ง GitHub CLI แล้ว login:
+
+```bash
+brew install gh
+gh auth login -h github.com -p https -w
+```
+
+> ถ้ายังไม่มี `brew` ให้ดาวน์โหลด GitHub CLI จาก [cli.github.com](https://cli.github.com) แทน
+
+1. terminal จะแสดงโค้ด 8 ตัว เช่น `ABCD-1234` (คัดลอกไว้ให้แล้ว)
+2. กด Enter ระบบจะเปิดเบราว์เซอร์ไปที่ [github.com/login/device](https://github.com/login/device) ให้วางโค้ด
+3. กด **Authorize GitHub CLI**
+4. กลับมาที่ terminal ถ้าขึ้น `✓ Logged in as <username>` แปลว่าเสร็จแล้ว
+
 ## เริ่มต้นใช้งาน
 
 ### 1. สร้าง repo ของตัวเองจาก template
