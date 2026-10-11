@@ -106,7 +106,18 @@ git push
 1. เข้า [vercel.com](https://vercel.com) แล้ว **Continue with GitHub**
 2. กด **Add New… → Project**
 3. เลือก repo ของตัวเอง แล้วกด **Import**
-4. ไม่ต้องตั้งค่าอะไรเพิ่ม กด **Deploy**
+4. เปิดหัวข้อ **Environment Variables** แล้วเพิ่มค่าเหล่านี้ (คัดลอกจากไฟล์ `.env.local` ในเครื่อง):
+
+   | Key | Value |
+   | --- | --- |
+   | `NEXT_PUBLIC_SUPABASE_URL` | URL ของโปรเจค Supabase |
+   | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Publishable key ของโปรเจค Supabase |
+
+5. กด **Deploy**
+
+> ⚠️ ไฟล์ `.env.local` **ไม่ถูก push ขึ้น GitHub** (ถูกกันไว้ใน `.gitignore` เพื่อความปลอดภัย) ถ้าข้ามขั้นที่ 4 เว็บที่ deploy จะดึงข้อมูลจาก Supabase ไม่ได้
+>
+> ถ้า deploy ไปแล้วเพิ่งมาใส่ค่า ให้ไปที่ **Settings → Environment Variables** ใส่ค่าให้ครบ แล้วไปที่แท็บ **Deployments** กด **⋯ → Redeploy**
 
 หลังจากนี้ทุกครั้งที่ `git push` ระบบจะ deploy เวอร์ชันใหม่ให้อัตโนมัติ
 
