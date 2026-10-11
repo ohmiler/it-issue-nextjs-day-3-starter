@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IT Issue Tracker — Day 3 Starter
 
-## Getting Started
+โปรเจคเริ่มต้นสำหรับเรียนวันที่ 3 สร้างด้วย [Next.js](https://nextjs.org) 16 (App Router) + TypeScript
 
-First, run the development server:
+ใครที่ไม่ได้ทำวันที่ 1–2 มา ใช้โปรเจคนี้เริ่มไปพร้อมกันได้เลย
+
+## สิ่งที่ต้องมีในเครื่อง
+
+- [Node.js](https://nodejs.org) เวอร์ชัน 20.9 ขึ้นไป (เช็คด้วย `node -v`)
+- [Git](https://git-scm.com)
+- บัญชี [GitHub](https://github.com)
+
+## เริ่มต้นใช้งาน
+
+### 1. สร้าง repo ของตัวเองจาก template
+
+> ⚠️ **อย่า `git clone` repo นี้ตรงๆ** เพราะจะ push ไม่ได้ และวันที่ 4 จะ deploy ไม่ได้
+
+1. กดปุ่มเขียว **Use this template** มุมขวาบนของหน้านี้
+2. เลือก **Create a new repository**
+3. ตั้งชื่อ repo ของตัวเอง แล้วกด **Create repository**
+
+### 2. Clone repo ของตัวเองลงเครื่อง
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/<username-ของตัวเอง>/<ชื่อ-repo>.git
+cd <ชื่อ-repo>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. ติดตั้งและรันโปรเจค
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+เปิด [http://localhost:3000](http://localhost:3000) ในเบราว์เซอร์
 
-## Learn More
+## ระหว่างเรียน: บันทึกงานขึ้น GitHub
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git add .
+git commit -m "อธิบายสิ่งที่ทำ"
+git push
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## วันที่ 4: Deploy ขึ้น Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. เข้า [vercel.com](https://vercel.com) แล้ว **Continue with GitHub**
+2. กด **Add New… → Project**
+3. เลือก repo ของตัวเอง แล้วกด **Import**
+4. ไม่ต้องตั้งค่าอะไรเพิ่ม กด **Deploy**
 
-## Deploy on Vercel
+หลังจากนี้ทุกครั้งที่ `git push` ระบบจะ deploy เวอร์ชันใหม่ให้อัตโนมัติ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ถ้าเผลอ clone repo ของอาจารย์มาแล้ว
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ไม่ต้องลบทิ้ง ให้สร้าง repo เปล่าบน GitHub ([github.com/new](https://github.com/new)) โดย**ไม่ต้อง**ติ๊ก README แล้วรัน:
+
+```bash
+git remote set-url origin https://github.com/<username-ของตัวเอง>/<ชื่อ-repo>.git
+git push -u origin main
+```
+
+## โครงสร้างโปรเจค
+
+```
+app/
+  page.tsx            หน้าแรก
+  issues/
+    page.tsx          รายการ issue ทั้งหมด
+    [id]/             รายละเอียด issue
+    new/              สร้าง issue ใหม่
+  not-found.tsx       หน้า 404
+components/           คอมโพเนนต์ที่ใช้ซ้ำ
+data/issue.ts         ข้อมูลตัวอย่าง
+types/                TypeScript types
+```
